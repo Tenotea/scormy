@@ -1,0 +1,187 @@
+body {
+	margin: 0;
+	height: 100%;
+}
+html {
+	height: 100%;
+}
+.mar-sm {
+	margin: 15px;
+}
+.pad-sm {
+	padding: 15px;
+}
+.pad-b-sm {
+	padding-bottom: 15px;
+}
+.pad-b-lg {
+	padding-bottom: 35px;
+}
+.page-header {
+	padding: 0 15px;
+	margin: 0;
+	background: #f6d875 /* url("../images/hunt-heading-bg.jpg") right center no-repeat */;
+	border-bottom: none;
+}
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+.vertical-align {
+    display: flex;
+    align-items: center;
+}
+.page-header h3, .page-header h5 {
+	-webkit-text-shadow: 0px 0px 2px #f6d875, 0px 0px 4px #f6d875, 0px 0px 6px #f6d875, 0px 0px 8px #f6d875, 0px 0px 10px #f6d875;
+	-moz-text-shadow: 0px 0px 2px #f6d875, 0px 0px 4px #f6d875, 0px 0px 6px #f6d875, 0px 0px 8px #f6d875, 0px 0px 10px #f6d875;
+	text-shadow: 0px 0px 2px #f6d875, 0px 0px 4px #f6d875, 0px 0px 6px #f6d875, 0px 0px 8px #f6d875, 0px 0px 10px #f6d875;
+}
+.shadow-bottom {
+	-webkit-box-shadow: 0px 1px 5px 2px #cccccc;
+	-moz-box-shadow: 0px 1px 5px 2px #cccccc;
+	box-shadow: 0px 1px 5px 2px #cccccc;
+}
+#main-content {
+	/*
+	font-size: 18px;
+	*/
+}
+#main-buttons-box {
+	position: fixed;
+	background-color: #c8c8c8;
+	padding: 5px 8px 5px 3px;
+	border: 1px solid #ffffff;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	-moz-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+	-webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+	z-index: 9999;
+	opacity: 0.9;
+}
+#main-buttons-box .btn {
+	margin: 0 0 0 5px;
+}
+#main-buttons-box.pos-top-right {
+	right: 25px;
+	top: 35px;
+}
+#main-buttons-box.pos-top-left {
+	left: 25px;
+	top: 35px;
+}
+#main-buttons-box.pos-bottom-right {
+	right: 25px;
+	bottom: 35px;
+}
+#main-buttons-box.pos-bottom-left {
+	left: 25px;
+	bottom: 35px;
+}
+#main-buttons-box .page-info-wrapper {
+	position: absolute;
+	top: -25px;
+	text-align: right;
+	width: 100%;
+	padding-right: 10px;
+}
+#main-buttons-box .page-info-text {
+	color: white;
+	background-color: #dddddd;
+	text-shadow: 0px 0px 2px rgba(150, 150, 150, 0.5);
+}
+#main-buttons-box .first-page {
+	cursor: pointer;
+}
+.slide-box {
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	vertical-align: middle;
+}
+.slide {
+	max-height: 100%;
+	max-width: 100%;
+	width: auto;
+	height: auto;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+}
+.progress {
+	height: 5px;
+	margin: 5px 0 2px 5px;
+}
+.count-down {
+	color: white;
+	min-width: 80px;
+	margin-left: 5px;
+	background-color: #dddddd;
+	text-shadow: 0px 0px 2px rgba(150, 150, 150, 0.5);
+}
+
+/* Video page 1 */
+
+.video-box {
+	padding: 0 !important;
+	height: 100% !important;
+}
+
+.video-outer {
+	display: table;
+	height: 100%;
+	margin: 0 auto;
+	width:100%;
+}
+.video-tcell {
+	display: table-cell;
+	vertical-align: middle;
+}
+.video-wrapper {
+	min-width: 0;
+	max-width: 100%;
+	margin: auto
+}
+.video-ratio-keeper {
+	position: relative;
+	padding-top: 56.25%;
+}
+.video-frame {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+/* Video page 2 */
+
+.video-container {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+.video-container video {
+	/* Make video to at least 100% wide and tall */
+	min-width: 100%;
+	min-height: 100%;
+
+	/* Setting width & height to auto prevents the browser from stretching or squishing the video */
+	width: auto;
+	height: auto;
+
+	/* Center the video */
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+}
+

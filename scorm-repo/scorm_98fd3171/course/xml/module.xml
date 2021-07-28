@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+	
+ <course title="Brain Bites - Time Management" id="BB_BB_TM">
+      <pages>
+		<page id="1" displayText="Module 01: Time Management Part1" link="//view.vzaar.com/11473959/player" type="html" keywords="Time Management Part1" tooltip="Time Management Part1"/>
+		<page id="2" displayText="Module 02: Time Management Part2" link="//view.vzaar.com/11473993/player" type="html" keywords="Time Management Part2" tooltip="Time Management Part2"/>
+			
+		</pages>
+		<transcript available="1">
+			<lang name="English" lang="en" image="en.png"/>
+			<lang name="Spanish" lang="sp" image="sp.png"/>
+			<lang name="Hindi" lang="in" image="in.png"/>
+			
+		</transcript>
+	</course>
+	
