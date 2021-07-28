@@ -80,7 +80,7 @@ application.get('/player', (req, res) => {
   res.send(html)
 })
 
-application.listen(5000, () => {
+application.listen(process.env.PORT || s5000, () => {
   console.log(`server: http://localhost:5000/
 service running...`);
 })
