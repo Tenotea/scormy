@@ -3,6 +3,7 @@ import multer from "multer";
 import crypto from "crypto"
 import path from "path";
 import DecompressZip from 'decompress-zip'
+import cors from 'cors'
 import { readFile, readFileSync, unlink } from "fs"
 import XML2JS from 'xml2js'
 
@@ -30,6 +31,9 @@ const fileParser = multer({
 
 application.use('/scorms', express.static('./scorm-repo'))
 application.use('/static', express.static('./static-assets'))
+application.use(cors({
+  origin: "*"
+}))
 
 application.post('/upload-scorm', fileParser.single('scorm_file'), (req, res) => {
   const scormPackage = req.file.path
@@ -55,14 +59,13 @@ application.post('/upload-scorm', fileParser.single('scorm_file'), (req, res) =>
         const xml2js = new XML2JS.Parser()
         xml2js.parseString(data, (error, jsonEquivalent) => {
           const indexPath = jsonEquivalent.manifest.resources[0].resource[0].$.href
-          let launchURL = req.protocol + '://' + req.hostname + (req.hostname === 'localhost' ? ':5000/' : '') + destination + '\\' + indexPath
+          let launchURL = req.protocol + '://' + req.hostname + (req.hostname === 'localhost' ? ':5000/' : '/') + 'player?path=' + req.protocol + '://' + req.hostname + (req.hostname === 'localhost' ? ':5000/' : '/') + destination.replace('scorm-repo', 'scorms') + '\\' + indexPath
           launchURL = launchURL.replace(/\\/g, '/')
           res.json({
             launchURL
           })
         })
       })
-      // res.status(200).json(req.file)
     })
   })
 
@@ -80,7 +83,7 @@ application.get('/player', (req, res) => {
   res.send(html)
 })
 
-application.listen(process.env.PORT || s5000, () => {
+application.listen(process.env.PORT || 5000, () => {
   console.log(`server: http://localhost:5000/
 service running...`);
 })
