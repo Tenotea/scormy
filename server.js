@@ -16,7 +16,6 @@ function getExtension (file) {
 }
 
 const application = express()
-application.use(cors())
 const storageConfig = multer.diskStorage({
   destination: (req, res, cb) => {
     cb(null, './scorm-zips')
