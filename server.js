@@ -53,7 +53,7 @@ application.post('/upload-scorm', fileParser.single('scorm_file'), (req, res) =>
       }
       readFile(destination + '\\imsmanifest.xml', (error, data) => {
         if (error) {
-          res.json(500).json({message: error.message})
+          res.status(500).json({message: error.message})
           return
         }
         const xml2js = new XML2JS.Parser()
@@ -68,7 +68,6 @@ application.post('/upload-scorm', fileParser.single('scorm_file'), (req, res) =>
       })
     })
   })
-
 })
 
 function _eval (body, ...args) {
