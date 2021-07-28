@@ -51,7 +51,7 @@ application.post('/upload-scorm', fileParser.single('scorm_file'), (req, res) =>
         })
         return
       }
-      readFile(destination + '\\imsmanifest.xml', (error, data) => {
+      readFile(destination + '/imsmanifest.xml', (error, data) => {
         if (error) {
           res.status(500).json({message: error.message})
           return
