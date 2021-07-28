@@ -1,5 +1,3 @@
-window.API = new Scorm12API()
-
 window.API_1484_11 = new Scorm2004API();
 
 window.API_1484_11.on('Initialize', () => {
@@ -12,20 +10,6 @@ window.API_1484_11.on('GetValue.cmi.completion_status', (content) => {
 })
 
 window.API_1484_11.on('SetValue.cmi.completion_status', (content, value) => {
-  console.log('Scorm package setting value for ' + content + ' as ' + value)
-  // return 'completed'
-})
-
-window.API.on('LMSInitialize', () => {
-  console.log('SCORM Package was initialized')
-})
-
-window.API.on('LMSGetValue.cmi.*', (content) => {
-  console.log('Scorm package requesting value for ' + content)
-  return 'completed'
-})
-
-window.API.on('LMSSetValue.cmi.*', (content, value) => {
   console.log('Scorm package setting value for ' + content + ' as ' + value)
   // return 'completed'
 })
