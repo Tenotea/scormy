@@ -1,5 +1,7 @@
 window.API_1484_11 = new Scorm2004API();
 
+window.API = new Scorm12API()
+
 window.API_1484_11.on('Initialize', () => {
   console.log('SCORM Package was initialized')
 })
