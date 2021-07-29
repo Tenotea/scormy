@@ -4,11 +4,9 @@
   "description": "Scorm package utility service",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js"
   },
   "author": "Tenotea",
-  "type": "module",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
