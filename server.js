@@ -38,8 +38,9 @@ application.post(
     fileParser.single("scorm_file"),
     (req, res) => {
       const scormPackage = req.file.path;
-      const destination =
+      let destination =
       "scorm-repo\\" + path.basename(scormPackage, getExtension(scormPackage));
+      console.log(destination)
       const unzipper = new DecompressZip(scormPackage);
 
       unzipper.on("error", (error) => {
@@ -48,44 +49,41 @@ application.post(
       unzipper.extract({path: destination});
 
       unzipper.on("extract", () => {
-        unlink(scormPackage, (error) => {
+        readFile(destination + "/imsmanifest.xml", (error, data) => {
           if (error) {
-            res.status(500).json({
-              message: "Clean up interrupted",
-            });
+            res.status(500).json({message: error.message});
             return;
           }
-          readFile(destination + "/imsmanifest.xml", (error, data) => {
-            if (error) {
-              res.status(500).json({message: error.message});
-              return;
-            }
-            const xml2js = new XML2JS.Parser();
-            xml2js.parseString(data, (error, jsonEquivalent) => {
-              const indexPath =
-              jsonEquivalent.manifest.resources[0].resource[0].$.href;
-              let launchURL =
-              (req.hostname === "localhost" ? "http" : "https") +
-              "://" +
-              req.hostname +
-              (req.hostname === "localhost" ? ":5000/" : "/") +
-              "player?path=" +
-              (req.hostname === "localhost" ? "http" : "https") +
-              "://" +
-              req.hostname +
-              (req.hostname === "localhost" ? ":5000/" : "/") +
-              destination.replace("scorm-repo", "scorms") +
-              "\\" +
-              indexPath;
-              launchURL = launchURL.replace(/\\/g, "/");
-              res.json({
-                launchURL,
-              });
+          const xml2js = new XML2JS.Parser();
+          xml2js.parseString(data, (error, jsonEquivalent) => {
+            const indexPath =
+            jsonEquivalent.manifest.resources[0].resource[0].$.href;
+            let launchURL =
+            (req.hostname === "localhost" ? "http" : "https") +
+            "://" +
+            req.hostname +
+            (req.hostname === "localhost" ? ":5000/" : "/") +
+            "player?path=" +
+            (req.hostname === "localhost" ? "http" : "https") +
+            "://" +
+            req.hostname +
+            (req.hostname === "localhost" ? ":5000/" : "/") +
+            destination.replace("scorm-repo", "scorms") +
+            "\\" +
+            indexPath;
+            launchURL = launchURL.replace(/\\/g, "/");
+            res.json({
+              launchURL,
             });
-          });
+            unlink(scormPackage, (error) => {
+              if (error) {
+                return;
+              }
+            });
         });
       });
-    }
+    });
+  }
 );
 
 function _eval(body, ...args) {
