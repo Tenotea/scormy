@@ -15,3 +15,9 @@ window.API_1484_11.on('SetValue.cmi.completion_status', (content, value) => {
   console.log('Scorm package setting value for ' + content + ' as ' + value)
   // return 'completed'
 })
+
+// Endpoints
+/**
+ * completion-status
+ * 
+ */

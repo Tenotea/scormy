@@ -65,12 +65,12 @@ application.post(
               const indexPath =
               jsonEquivalent.manifest.resources[0].resource[0].$.href;
               let launchURL =
-              req.protocol +
+              (req.hostname === "localhost" ? "http" : "https") +
               "://" +
               req.hostname +
               (req.hostname === "localhost" ? ":5000/" : "/") +
               "player?path=" +
-              req.protocol +
+              (req.hostname === "localhost" ? "http" : "https") +
               "://" +
               req.hostname +
               (req.hostname === "localhost" ? ":5000/" : "/") +
